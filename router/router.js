@@ -22,53 +22,19 @@ router.post('/upload_file', upload.single('img'), function (req, res) {
     console.log(req.file);
     console.log('success save file');
 
-    var fileOriginalname = req.file.originalname
+    var fn = req.file.originalname
     var date = new Date();
-    date = date.toLocaleDateString().replace('. ', '_') + '_' + date.getHours.toString() + '_' + date.getMinutes.toString() + '_' +
+    date = date.toLocaleDateString().replace('. ', '_') + '_'.toString() + date.getHours.toString() + '_'.toString() + date.getMinutes.toString() + '_'.toString() + date.getMilliseconds.toString();
     console.log(date)
-    execFile('detectionModel/darknet', ['detector', 'test', 'detectionModel/model/obj.data', 'detectionModel/model/yolov3_custom.cfg', 'detectionModel/model/yolov3_custom_10000.weights', './result/img/' + fileOriginalname, '-dont_show', '-thresh 0.65'], function (err, data) {
+    execFile('./startLabeling', [fn, fn.substring(0, fn.lastIndexOf('.')) + 'txt', fn.substring(0, fn.lastIndexOf('.')) + '.txt', 
+            'predict_' + fn.substring(0, fn.lastIndexOf('.')) + '.jpg', 'predict_' + fn.substring(0, fn.lastIndexOf('.')) + '.jpg', 
+            fn, fn.substring(0, fn.lastIndexOf('.')), 'predict_' + fn.substring(0, fn.lastIndexOf('.')) + '.jpg'], function (err, data) {
         if (err) {
             console.log(err)
         }
         else {
             console.log(data.toString());
-            res.sendFile(path.join(__dirname, './predictions.jpg'));
-
-            execFile('cp', ['./result/label/tmp.txt', './result/integrate/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.txt', '&& cp ./result/label/tmp.txt ./result/label/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.txt'], function (err, data) {
-                if (err) {
-                    console.log(err)
-                }
-                else {
-                    console.log(data.toString());
-
-                    execFile('rm', ['./result/label/tmp.txt'], function (err, data) {
-                        if (err) {
-                            console.log(err)
-                        }
-                        else {
-                            console.log(data.toString());
-                        }
-                    });
-                }
-            });
-
-            execFile('cp', ['./predictions.jpg', './result/integrate/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg', '&& cp ./predictions.jpg ./result/predict_Img/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg'], function (err, data) {
-                if (err) {
-                    console.log(err)
-                }
-                else {
-                    console.log(data.toString());
-                }
-            });
-
-            execFile('cp', ['./result/img/' + fileOriginalname, './result/integrate/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg', '&& cp ./result/img/ ./result/predict_Img/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg'], function (err, data) {
-                if (err) {
-                    console.log(err)
-                }
-                else {
-                    console.log(data.toString());
-                }
-            });
+            res.sendFile(path.join(__dirname, '/../predictions.jpg'));
         }
     });
 });
