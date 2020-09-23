@@ -1,0 +1,10 @@
+/home/hoo/darknet/fish_image/fish_photo_test/flat_test.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/flat_test2.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/flat_test3.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/flat_test4.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/mullet_test.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/mullet_test2.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/rock_test2.jpg
+/home/hoo/darknet/fish_image/fish_photo_test/rock_test3.jpg
+
+
