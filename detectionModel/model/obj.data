@@ -1,3 +1,2 @@
 classes= 1
-names = /home/daein/label_server/detectionModel/model/obj.names
-backup = backup/
+names = detectionModel/model/obj.names

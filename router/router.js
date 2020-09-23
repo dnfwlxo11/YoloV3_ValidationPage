@@ -32,9 +32,9 @@ router.post('/upload_file', upload.single('img'), function (req, res) {
         }
         else {
             console.log(data.toString());
-            res.sendFile(path.join(__dirname, '/../predictions.jpg'))
+            res.sendFile(path.join(__dirname, './predictions.jpg'));
 
-            execFile('cp', ['./result/label/tmp.txt', './result/label/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.txt'], function (err, data) {
+            execFile('cp', ['./result/label/tmp.txt', './result/integrate/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.txt', '&& cp ./result/label/tmp.txt ./result/label/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.txt'], function (err, data) {
                 if (err) {
                     console.log(err)
                 }
@@ -52,7 +52,16 @@ router.post('/upload_file', upload.single('img'), function (req, res) {
                 }
             });
 
-            execFile('cp', [path.join(__dirname, '/../predictions.jpg'), './result/predict_Img/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg'], function (err, data) {
+            execFile('cp', ['./predictions.jpg', './result/integrate/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg', '&& cp ./predictions.jpg ./result/predict_Img/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg'], function (err, data) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    console.log(data.toString());
+                }
+            });
+
+            execFile('cp', ['./result/img/' + fileOriginalname, './result/integrate/' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg', '&& cp ./result/img/ ./result/predict_Img/predict_' + fileOriginalname.substring(0, fileOriginalname.lastIndexOf('.')) + '.jpg'], function (err, data) {
                 if (err) {
                     console.log(err)
                 }

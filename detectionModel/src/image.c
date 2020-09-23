@@ -393,7 +393,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 	    // 검색
 	    if (selected_detections[i].det.prob[selected_detections[i].best_class] * 100 > 65){
 		printf("%d %f %f %f %f\n", selected_detections[i].best_class, b.x, b.y, b.w, b.h);
-		FILE *fp = fopen("/home/daein/label_server/result/label/tmp.txt", "a+");
+		FILE *fp = fopen("./result/label/tmp.txt", "a+");
 		fprintf(fp, "%d %f %f %f %f\n", selected_detections[i].best_class, b.x, b.y, b.w, b.h);
 		fclose(fp);
 	    	printf("%d번째 이미지 라벨링 정보 저장 완료\n", i+1);
