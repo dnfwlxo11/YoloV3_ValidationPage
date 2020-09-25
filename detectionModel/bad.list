@@ -69936,3 +69936,5 @@ detection/data/labels/123_7.png
 detection/data/labels/124_7.png
 detection/data/labels/125_7.png
 detection/data/labels/126_7.png
+../result/predict_Img/
+../result/label/result.txt
