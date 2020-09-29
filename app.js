@@ -20,4 +20,3 @@ app.use('/', router);
 // app.use('/ajax_home', router);
 
 app.use(express.static('public'));
-app.use(express.static('detectionModel'));

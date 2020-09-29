@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>post test</title>
+    <title>이미지 업로드</title>
 </head>
 
 <body>
+    <script>
+        var startRefresh = setInterval(function () {
+            var data = new Date().getTime();
+            $('#realtimeImg').attr('src', './predictions.jpg?' + data);
+            console.log('사진 바뀜');
+        }, 1500);
+    </script>
     <!-- <form action='/email_post' method='post'>
         email : <input type='text' name='email'/>
         <input type='submit'/>
@@ -16,13 +23,14 @@
     <button class='ajax'>ajax_test</button>
 
     <label class='ajax_label'></label> -->
-    
+    <img src='./predictions.jpg' width="640x" height="480px" id=realtimeImg>
     <form action='/upload_file' method='post' enctype="multipart/form-data">
-        <input type='file' value='이미지 업로드' name='img' multiple/>
-        <input type='submit'/>
+        <input type='file' value='이미지 업로드' name='img' multiple />
+        <input type='submit' />
     </form>
 
-    <script>
+    <script src='http://code.jquery.com/jquery-latest.min.js'>
+        startRefresh();
         // var hostname = '127.0.0.1'
 
         // document.querySelector('.ajax').addEventListener('click', function () {
