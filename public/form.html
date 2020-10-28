@@ -12,6 +12,7 @@
         var startRefresh = setInterval(function () {
             var data = new Date().getTime();
             $('#realtimeImg').attr('src', './predictions.jpg?' + data);
+            $('#presentImg').attr('src', '/present.PNG?' + data);
             console.log('사진 바뀜');
         }, 1500);
     </script>
@@ -23,6 +24,7 @@
     <button class='ajax'>ajax_test</button>
 
     <label class='ajax_label'></label> -->
+    <img src='./present.PNG' width="640x" height="480px" id=presentImg>
     <img src='./predictions.jpg' width="640x" height="480px" id=realtimeImg>
     <form action='/upload_file' method='post' enctype="multipart/form-data">
         <input type='file' value='이미지 업로드' name='img' multiple />

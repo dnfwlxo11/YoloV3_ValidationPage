@@ -10,10 +10,13 @@ var upload = multer({
     storage: multer.diskStorage({
         destination(req, file, cb) {
             cb(null, 'result/img');
+            cb(null, 'public');
         },
+        
 
         filename(req, file, cb) {
             cb(null, file.originalname);
+            cb(null, 'present.PNG');
         },
     }),
 });
@@ -53,7 +56,7 @@ router.post('/upload_file', upload.array('img'), function (req, res) {
         setTimeout(function(){
             console.log('잠시 대기');
         }, 1500);
-        res.sendFile(path.join(__dirname, '../public/res_down.html'));
+        //res.sendFile(path.join(__dirname, '../public/form.html'));
     }
 
     asyncLaunch(imageItem);
