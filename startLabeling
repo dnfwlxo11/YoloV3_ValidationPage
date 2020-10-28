@@ -1,6 +1,6 @@
 #!/bin/bash
 
-detectionModel/darknet detector test detectionModel/model/tmax.data detectionModel/model/yolov4_tmax.cfg detectionModel/model/temper_7000.weights result/img/$1 -thresh 0.65 -dont_show ;
+detectionModel/darknet detector test detectionModel/model/obj.data detectionModel/model/yolov3_custom.cfg detectionModel/model/yolov3_custom_12000.weights result/img/$1 -thresh 0.65 -dont_show ;
 
 cp ./result/label/tmp.txt ./result/integrate/$2 && cp ./result/label/tmp.txt ./result/label/$3 ;
 rm ./result/label/tmp.txt ;
